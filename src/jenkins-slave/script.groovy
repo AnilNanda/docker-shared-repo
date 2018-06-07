@@ -5,7 +5,7 @@ def runScript(){
 	node("jenkins-ecs-slave"){
 	try {
 		stage('Setup'){
-		  commons.cleanWS()
+		  commons.cleanWs()
 		  commons.checkoutGitFromSCM(scm)
 	    	}
 		stage('PackageImage'){
