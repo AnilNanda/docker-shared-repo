@@ -35,7 +35,7 @@ def cleanUpDockerImages() {
 }
 
 def checkoutGitFromScm(scm){
-	checkout changelog: true poll: true
+	checkout changelog: true, poll: true,
 	scm: [
 		$class: 'GitSCM',
 		branches: scm.branches,            
