@@ -20,7 +20,7 @@ def createDir(dirName){
 
 def setAWSRegion(region) {
 
-sh "aws configure set region $(region)"
+sh "aws configure set region ${region}"
 }
 
 def cleanWs(){
