@@ -1,4 +1,3 @@
-def commons =null
 
 def runScript(){
 	
