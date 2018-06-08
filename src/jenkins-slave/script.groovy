@@ -3,6 +3,7 @@ def runScript(){
 	node("jenkins-ecs-slave"){
 	try {
 		stage('Setup'){
+		  println(commons)
 		  commons.cleanWs()
 		  commons.checkoutGitFromSCM(scm)
 	    	}
