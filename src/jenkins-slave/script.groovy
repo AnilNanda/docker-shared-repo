@@ -1,6 +1,6 @@
 def runScript(){
 	
-	node("jenkins-ecs-base-slave"){
+	node("jenkins-ecs-slave"){
 	try {
 		stage('Setup'){
 		  commons.cleanWs()
