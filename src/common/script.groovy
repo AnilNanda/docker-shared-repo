@@ -46,4 +46,4 @@ def checkoutGitFromScm(scm){
 }
 
 
-
+return this
