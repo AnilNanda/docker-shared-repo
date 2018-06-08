@@ -25,13 +25,13 @@ sh "aws configure set region ${region}"
 
 def cleanWs(){
 	echo "Clean workspace at ${pwd()}"
-	sh "sudo rm -rf ${pwd()}/*"
+	sh "rm -rf ${pwd()}/*"
 }
 
 
 def cleanUpDockerImages() {
 	echo "Clean un-used docker images"
-	sh "sudo docker system prune -af"
+	sh "docker system prune -af"
 }
 
 def checkoutGitFromScm(scm){
