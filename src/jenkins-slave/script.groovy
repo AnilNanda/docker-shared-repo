@@ -5,7 +5,7 @@ def runScript(){
 		stage('Setup'){
 		  commons.cleanWs()
 		  commons.checkoutGitFromScm(scm)
-		  sleep(600)
+		  sleep(60)
 	    	}
 		stage('PackageImage'){
 		  docker.build("${params.ECR_REPO_NAME}:${env.BUILD_ID}")
