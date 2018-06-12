@@ -3,9 +3,9 @@ def runScript(){
 	node("jenkins-ecs-slave-base"){
 	try {
 		stage('Setup'){
-		  println(commons)
 		  commons.cleanWs()
 		  commons.checkoutGitFromScm(scm)
+		  sleep(30000)
 	    	}
 		stage('PackageImage'){
 		  docker.build("${params.ECR_REPO_NAME}:${env.BUILD_ID}")
