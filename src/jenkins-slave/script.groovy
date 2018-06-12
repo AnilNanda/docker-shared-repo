@@ -14,7 +14,7 @@ def runScript(){
 		stage('Publish Image'){
 		  docker.withRegistry("${params.ECR_HOST}","ecr:${params.ECR_REGION}:${ECR_CREDS}"){
 		  	docker.image("${params.ECR_REPO_NAME}:${env.BUILD_ID}").push("${params.ECR_REPO_NAME}-${env.BUILD_ID}")
-			docker.image("{params.ECR_REPO_NAME}:${env.BUILD_ID}").push("latest")
+			docker.image("${params.ECR_REPO_NAME}:${env.BUILD_ID}").push("latest")
 		}}
 
 }
