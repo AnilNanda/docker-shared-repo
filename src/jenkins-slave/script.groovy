@@ -17,7 +17,7 @@ def runScript(){
 			docker.image("${params.ECR_REPO_NAME}:${env.BUILD_ID}").push("latest")
 		}}
                 stage('Notify'){
-                  commons.notifyBuild('Success')
+                  commons.notifyBuild('SUCCESS')
                 }
 
 }
