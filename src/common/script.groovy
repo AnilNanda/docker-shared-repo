@@ -9,7 +9,7 @@ HIPCHAT_SERVER = "sme-apps.slack.com"
 JENKINS_SLACK_CREDENTIALS = "slack-jenkins"
 
 //
-CHATOPS_STATUS_COLOR_MAP = ["STARTED":"GREEN", "UNSTABLE":"YELLOW", "FAILURE":"RED", "SUCCESS":"GREEN", "ABORTED":"GRAY"]
+CHATOPS_STATUS_COLOR_MAP = ["STARTED":"#36A64F", "UNSTABLE":"#f4ef02", "FAILURE":"#f40202", "SUCCESS":"#36A64F", "ABORTED":"#706f63"]
 
 def getRandom(){
 if (random){
@@ -55,8 +55,8 @@ def checkoutGitFromScm(scm){
 
 def notifyBuild(status) {
     def statusStr = status.toString()
-//    def color = CHATOPS_STATUS_COLOR_MAP.containsKey(statusStr) ? CHATOPS_STATUS_COLOR_MAP.get(statusStr) : "PURPLE"
-    def color = "#36A64F" 
+    def color = CHATOPS_STATUS_COLOR_MAP.containsKey(statusStr) ? CHATOPS_STATUS_COLOR_MAP.get(statusStr) : "PURPLE"
+//    def color = "#36A64F" 
     if(!params.containsKey("MUTE_HIPCHAT") || !params["MUTE_HIPCHAT"]) {
         if(!params.containsKey("SLACK_CHANNEL") || !params["SLACK_CHANNEL"]) {
             logStep "SLACK_CHANNEL parameter is not defined or empty. Please pass a parameter as SLACK_CHANNEL with appropriate channel value to the build job."
