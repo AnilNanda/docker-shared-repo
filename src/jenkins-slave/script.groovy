@@ -2,6 +2,7 @@ def runScript(){
 	
 	node("jenkins-ecs-slave-base"){
 	try {
+                commons.notifyBuild('STARTED')
 		stage('Setup'){
 		  commons.cleanWs()
 		  commons.checkoutGitFromScm(scm)
@@ -16,16 +17,22 @@ def runScript(){
 		  	docker.image("${params.ECR_REPO_NAME}:${env.BUILD_ID}").push("${params.ECR_REPO_NAME}-${env.BUILD_ID}")
 			docker.image("${params.ECR_REPO_NAME}:${env.BUILD_ID}").push("latest")
 		}}
-                stage('Notify'){
-                  commons.notifyBuild('SUCCESS')
+//                stage('Notify'){
+//                  commons.notifyBuild('SUCCESS')
+		            if(currentBuild.result == null) {
+                currentBuild.setResult("SUCCESS")
                 }
 
 }
 catch(error){
+	     if(currentBuild.result == null) {
+                currentBuild.setResult("FAILURE")
+            }
 	throw error
 }
 finally{
 	deleteDir()
+        commons.notifyBuild(currentBuild.result)
 }}}
 
 return this
